@@ -73,5 +73,22 @@ document.addEventListener("DOMContentLoaded", () => {
   let autoSlideInterval = setInterval(showNextSlide, 3000);
 
   updateSlider();
-});
 
+  // Accordion functionality
+  const accordionItems = document.querySelectorAll('.accordion-item');
+
+  accordionItems.forEach(item => {
+    const title = item.querySelector('.accordion-title');
+    title.addEventListener('click', () => {
+      accordionItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+          otherItem.querySelector('.accordion-content').style.display = 'none';
+        }
+      });
+      item.classList.toggle('active');
+      const content = item.querySelector('.accordion-content');
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+});
