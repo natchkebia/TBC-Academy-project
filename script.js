@@ -78,17 +78,40 @@ document.addEventListener("DOMContentLoaded", () => {
   const accordionItems = document.querySelectorAll('.accordion-item');
 
   accordionItems.forEach(item => {
-    const title = item.querySelector('.accordion-title');
-    title.addEventListener('click', () => {
+    const header = item.querySelector('.accordion-item__header');
+    header.addEventListener('click', () => {
       accordionItems.forEach(otherItem => {
         if (otherItem !== item) {
           otherItem.classList.remove('active');
           otherItem.querySelector('.accordion-content').style.display = 'none';
+          const otherHeader = otherItem.querySelector('.accordion-item__header');
+          if (otherHeader) {
+            otherHeader.classList.remove('no-border');
+            const otherIcon = otherHeader.querySelector('i');
+            if (otherIcon) {
+              otherIcon.classList.remove('fa-chevron-up');
+              otherIcon.classList.add('fa-chevron-down');
+            }
+          } 
         }
       });
+
       item.classList.toggle('active');
       const content = item.querySelector('.accordion-content');
       content.style.display = content.style.display === 'block' ? 'none' : 'block';
+
+      const icon = header.querySelector('i');
+      if (icon) {
+        if (content.style.display === 'block') {
+          icon.classList.remove('fa-chevron-down');
+          icon.classList.add('fa-chevron-up');
+          header.classList.add('no-border');
+        } else {
+          icon.classList.remove('fa-chevron-up');
+          icon.classList.add('fa-chevron-down');
+          header.classList.remove('no-border');
+        }
+      }
     });
   });
 });

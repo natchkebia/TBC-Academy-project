@@ -1,0 +1,147 @@
+
+@media (max-width: 1070px) {
+    .slider-container {
+      width: 800px;
+    }
+    .slider-wrapper {
+      margin: 10px;
+    }
+  
+    .slider-wrapper > img {
+      width: 250px;
+    }
+  
+    .accordion-section {
+      padding: 0 10px 56px 10px;
+    }
+  
+    .footer-container {
+      padding: 56px 10px;
+    }
+  }
+  
+  @media (max-width: 960px) {
+    .course-wrapper {
+      align-items: center;
+    }
+  
+    .course-wrapper > div {
+      justify-content: space-evenly;
+    }
+  }
+  
+  @media (max-width: 861px) {
+    .slider > i {
+      display: none;
+    }
+    .slider-container {
+      width: 400px;
+    }
+    .slider-wrapper {
+      margin: 5px;
+    }
+  
+    .slider-wrapper > img {
+      width: 190px;
+    }
+    .dot-3 {
+      display: block;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+      background-color: rgba(26, 30, 31, 0.95);
+      position: fixed;
+      top: 60px;
+      right: 0;
+      height: 100vh;
+      width: 50vw;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+  
+    .nav-links.active {
+      display: flex;
+      opacity: 1;
+    }
+  
+    .burger {
+      display: flex;
+    }
+  
+    .image-wrapper {
+      font-size: 25px;
+    }
+    .text-container {
+      font-size: 20px;
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 418px) {
+    .slider-container {
+      width: 300px;
+    }
+    .slider-wrapper {
+      margin: 5px;
+    }
+  
+    .slider-wrapper > img {
+      width: 290px;
+    }
+    .dot-4,
+    .dot-5,
+    .dot-6 {
+      display: block;
+    }
+  
+    .footer-container {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+  
+    .footer-left__container > p {
+      padding-top: 50px;
+      padding-right: 25px;
+    }
+  
+    .footer-left__container > button {
+      padding: 0
+    }
+  
+    .footer-right__container {
+      flex-direction: row;
+      position: absolute;
+      top: 100px;
+    }
+  }
+  
+  @media (max-width: 380px) {
+    .image-container {
+      margin-top: 57px;
+      background-image: url(/images/436640012_469302625678742_1233915696370565072_n.jpg);
+      background-size: contain;
+    }
+    .image-wrapper {
+      height: 257px;
+    }
+    .image-wrapper > div {
+      padding: 0;
+      font-size: 20px;
+    }
+    .text-container {
+      margin-top: 0;
+    }
+  
+    .slider-section > h2 {
+      padding-left: 20px;
+    }
+  }
