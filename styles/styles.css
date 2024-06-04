@@ -369,6 +369,11 @@
   border-bottom: none;
 }
 
+.accordion-item__header > i {
+  font-size: 10px;
+  padding-right: 10px;
+}
+
 .accordion-title {
   padding: 30px 0;
   font-size: 20px;

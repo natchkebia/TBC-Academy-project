@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentIndex = 0;
   let scrollAmount = 0;
+  let startX = 0;
+  let endX = 0;
+  let autoSlideInterval;
 
   const updateSlider = () => {
     let containerWidth = sliderContainer.offsetWidth;
@@ -35,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentIndex < sliderWrappers.length - 1) {
       currentIndex++;
     } else {
-      currentIndex = 0;
+      currentIndex = 0; 
     }
     updateSlider();
   };
@@ -44,33 +47,54 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentIndex > 0) {
       currentIndex--;
     } else {
-      currentIndex = sliderWrappers.length - 1;
+      currentIndex = sliderWrappers.length - 1; 
     }
     updateSlider();
   };
 
+  const resetAutoSlide = () => {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(showNextSlide, 3000);
+  };
+
   rightArrow.addEventListener("click", () => {
-    clearInterval(autoSlideInterval); 
     showNextSlide();
-    autoSlideInterval = setInterval(showNextSlide, 3000); 
+    resetAutoSlide();
   });
 
   leftArrow.addEventListener("click", () => {
-    clearInterval(autoSlideInterval); 
     showPreviousSlide();
-    autoSlideInterval = setInterval(showNextSlide, 3000); 
+    resetAutoSlide();
   });
 
   dots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
-      clearInterval(autoSlideInterval); 
       currentIndex = index;
       updateSlider();
-      autoSlideInterval = setInterval(showNextSlide, 3000);
+      resetAutoSlide();
     });
   });
 
-  let autoSlideInterval = setInterval(showNextSlide, 3000);
+  // Touch functionality
+  sliderContainer.addEventListener("touchstart", (event) => {
+    startX = event.touches[0].clientX;
+    clearInterval(autoSlideInterval);
+  });
+
+  sliderContainer.addEventListener("touchmove", (event) => {
+    endX = event.touches[0].clientX;
+  });
+
+  sliderContainer.addEventListener("touchend", () => {
+    if (startX - endX > 50) {
+      showNextSlide(); 
+    } else if (endX - startX > 50) {
+      showPreviousSlide(); 
+    }
+    resetAutoSlide();
+  });
+
+  autoSlideInterval = setInterval(showNextSlide, 3000);
 
   updateSlider();
 
